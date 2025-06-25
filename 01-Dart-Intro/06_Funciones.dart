@@ -18,6 +18,9 @@ void main() {
   
   int sumaOpcional = sumarNumerosOpcional2(5);
   print(sumaOpcional);
+  
+  saludo('Rafita');
+    
 }
 
 String saludar() {
@@ -29,7 +32,7 @@ int sumarNumeros(int a, int b) => a + b;
 int sumarNumerosOpcional(int a, int? b) {
   // b = b ?? 0;
   b ??= 0;
-  return a = b;
+  return a + b;
 }
 
 
@@ -38,4 +41,7 @@ int sumarNumerosOpcional2(int a, [int b = 0]) {
   return a + b;
 }
 
+void saludo(String nombre) {
+  print('Hola $nombre');
+}
 
