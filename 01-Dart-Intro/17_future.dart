@@ -1,9 +1,8 @@
-void main() {
-  cargarDatos();
-  print('Fin del programa'); 
+Future<String> obtenerMensaje() async {
+  return 'Hola desde el futuro';
 }
 
-Future<void> cargarDatos() async {
-  await Future.delayed(Duration(seconds: 1));
-  print('Datos cargados');
+void main() async {
+  String mensaje = await obtenerMensaje();
+  print(mensaje); 
 }
