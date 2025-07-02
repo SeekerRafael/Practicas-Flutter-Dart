@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(
-    MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(title: Text('Hola Flutter')),
-        body: Center(
-          child: Text(
-            '¡Hola mundo!',
-            style: TextStyle(fontSize: 24),
-          ),
-        ),
-      ),
-    ),
-  ); 
+  runApp(MyApp());
 }
+
+class MyApp extends StatelessWidget{
+
+  const MyApp({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    // TODO: implement build
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: Scaffold(
+        body: Center(child: Text('Hola Rafa'),),
+      ),
+    );
+  }
+
+}
+
