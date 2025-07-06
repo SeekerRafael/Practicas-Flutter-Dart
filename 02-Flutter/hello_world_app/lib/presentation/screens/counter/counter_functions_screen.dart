@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 
 class CounterFunctionScreen extends StatefulWidget {
-
-
   const CounterFunctionScreen({super.key});
 
   @override
@@ -10,10 +8,8 @@ class CounterFunctionScreen extends StatefulWidget {
 }
 
 class _CounterFunctionScreenState extends State<CounterFunctionScreen> {
-
   int clicCounter = 0;
   //String click = 'clicks';
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,14 +25,7 @@ class _CounterFunctionScreenState extends State<CounterFunctionScreen> {
           onPressed: () {}, 
           icon: Icon( Icons.safety_check)
           ),
-          IconButton(
-          onPressed: () {
-            setState(() {
-              clicCounter = 0;
-            });
-          }, 
-          icon: Icon( Icons.refresh_rounded)
-          ),
+          
         ],
       ),
         body: Center(
@@ -52,40 +41,44 @@ class _CounterFunctionScreenState extends State<CounterFunctionScreen> {
         floatingActionButton: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            FloatingActionButton(
-              shape: StadiumBorder(),
-              backgroundColor: Colors.green,
-              onPressed: () {           
-                setState(() {
-                  clicCounter ++;
-                  // click = clicCounter == 1 ? 'click' : 'clicks';
-                  
-                });
-              },
-              child: const Icon( Icons.plus_one, color: Colors.white ),
-              
-
-            ),
+            
+            CustomBotton( icon: Icons.plus_one, colores: Colors.limeAccent, ),
 
             SizedBox( width: 45,),
 
-            FloatingActionButton(
-              backgroundColor: Colors.red,
-              onPressed: () {           
-                setState(() {
-                  clicCounter --;
-                  // click = clicCounter == 1 ? 'click' : 'clicks';
-                  
-                });
-              },
-              child: const Icon( Icons.exposure_minus_1_outlined, color: Colors.white, ),
+            CustomBotton( icon: Icons.exposure_minus_1_outlined, colores: Colors.deepOrangeAccent, ),
 
-            ),
+            SizedBox( width: 45,),
+
+            CustomBotton( icon: Icons.refresh, colores: Colors.tealAccent, ),
           ],
         )
         
         
       );
+  }
+}
+
+class CustomBotton extends StatelessWidget {
+
+  final IconData icon;
+  final Color colores;
+  
+
+  const CustomBotton({
+    super.key, 
+    required this.icon, 
+    required this.colores, 
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return FloatingActionButton(
+      backgroundColor: colores,
+      onPressed: () { },
+      child: Icon( icon ),
+    
+    );
   }
 }
 
