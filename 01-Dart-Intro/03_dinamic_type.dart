@@ -1,8 +1,7 @@
 void main() {
-  
   final String dragonBall = 'Vegeta';
   final int precio = 390;
-  final bool? esVerdadero;
+  final bool? esVerdadero = null; // Corregido aquí
   final List<String> lista = ['Rafita', 'Bris'];
 
   dynamic variable = true;
@@ -11,11 +10,8 @@ void main() {
   variable = null;
   variable = () => true;
   variable = 29;
-  
+
   print("""
-  
   $dragonBall
-  
   """);
-  
 }

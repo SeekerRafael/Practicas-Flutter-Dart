@@ -8,7 +8,7 @@ class CounterFunctionScreen extends StatefulWidget {
 }
 
 class _CounterFunctionScreenState extends State<CounterFunctionScreen> {
-  int clicCounter = 0;
+  int clickCounter = 0;
   //String click = 'clicks';
   @override
   Widget build(BuildContext context) {
@@ -32,8 +32,8 @@ class _CounterFunctionScreenState extends State<CounterFunctionScreen> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('$clicCounter', style: TextStyle( fontSize: 160, fontWeight: FontWeight.bold, color: clicCounter < 0 ? Colors.red : Colors.black),),
-              Text('click${clicCounter == 1 ? '' : 's'}', style: TextStyle( fontSize: 100, fontWeight: FontWeight.w300),),
+              Text('$clickCounter', style: TextStyle( fontSize: 160, fontWeight: FontWeight.bold, color: clickCounter < 0 ? Colors.red : Colors.black),),
+              Text('click${clickCounter == 1 ? '' : 's'}', style: TextStyle( fontSize: 100, fontWeight: FontWeight.w300),),
               
             ],
           ),
@@ -42,15 +42,31 @@ class _CounterFunctionScreenState extends State<CounterFunctionScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             
-            CustomBotton( icon: Icons.plus_one, colores: Colors.limeAccent, ),
+            CustomBotton( icon: Icons.plus_one, colores: Colors.limeAccent, 
+              onPressed: () {
+                setState(() {
+                  clickCounter++;
+                });
+              }),
 
             SizedBox( width: 45,),
 
-            CustomBotton( icon: Icons.exposure_minus_1_outlined, colores: Colors.deepOrangeAccent, ),
+            CustomBotton( icon: Icons.exposure_minus_1_outlined, colores: Colors.deepOrangeAccent, 
+              onPressed: () {
+                setState(() {
+                  if(clickCounter == 0) return;
+                  clickCounter--;
+                });
+              }),
 
             SizedBox( width: 45,),
 
-            CustomBotton( icon: Icons.refresh, colores: Colors.tealAccent, ),
+            CustomBotton( icon: Icons.refresh, colores: Colors.tealAccent, 
+            onPressed: () {
+                setState(() {
+                  clickCounter = 0;
+                });
+              }),
           ],
         )
         
@@ -63,19 +79,22 @@ class CustomBotton extends StatelessWidget {
 
   final IconData icon;
   final Color colores;
-  
+  final VoidCallback? onPressed;
+
 
   const CustomBotton({
     super.key, 
     required this.icon, 
     required this.colores, 
+    this.onPressed, 
   });
 
   @override
   Widget build(BuildContext context) {
     return FloatingActionButton(
       backgroundColor: colores,
-      onPressed: () { },
+      onPressed: onPressed,
+      elevation: 23,
       child: Icon( icon ),
     
     );
