@@ -8,7 +8,38 @@ class ChatScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Rafitaa'),
+        leading: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: CircleAvatar(
+            backgroundImage: NetworkImage('https://static.wikia.nocookie.net/uncharted/images/e/e1/Nathan_Drake_from_ATE_headshot.png/revision/latest?cb=20221025141033'),
+          ),
+        ),
+        title: Text('Rafita'),
+      ),
+      body: _ChatView(),
+    );
+  }
+}
+
+class _ChatView extends StatelessWidget {
+  
+  @override
+  Widget build(BuildContext context) {
+    return SafeArea(
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          children: [
+            Text('Hola'),
+            Expanded(
+              child: ListView.builder(
+                itemCount: 100,
+                itemBuilder: (context, index) {
+                return Text('Indice :$index');
+              })),
+            Text('Mundo')
+          ],
+        ),
       ),
     );
   }
