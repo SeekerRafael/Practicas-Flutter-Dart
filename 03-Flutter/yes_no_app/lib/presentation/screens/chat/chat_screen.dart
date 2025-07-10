@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:yes_no_app/presentation/widgets/chat/mis_mensajes.dart';
 import 'package:yes_no_app/presentation/widgets/chat/otros_mensajes.dart';
+import 'package:yes_no_app/presentation/widgets/shared/campo_mensajes.dart';
 
 
 class ChatScreen extends StatelessWidget {
@@ -32,7 +33,6 @@ class _ChatView extends StatelessWidget {
         padding: const EdgeInsets.symmetric(horizontal: 10),
         child: Column(
           children: [
-            Text('Hola'),
             Expanded(
               child: ListView.builder(
                 itemCount: 100,
@@ -41,7 +41,7 @@ class _ChatView extends StatelessWidget {
                     ? const OtrosMensajes()
                     : const MisMensajes();
               })),
-            Text('Mundo')
+            CampoMensajes()
           ],
         ),
       ),
