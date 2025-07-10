@@ -6,6 +6,10 @@ class CampoMensajes extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
 
+    final textController = TextEditingController();
+
+    final focusNode = FocusNode();
+
     final colors = Theme.of(context).colorScheme;
 
     final outlineInputBorder = UnderlineInputBorder(
@@ -14,27 +18,39 @@ class CampoMensajes extends StatelessWidget {
     );
 
     final inputDecoracion = InputDecoration(
+        hintText: 'End your message with a "?"',
         enabledBorder: outlineInputBorder,
         focusedBorder: outlineInputBorder,
-        fillColor: const Color.fromARGB(145, 0, 27, 206),
+        fillColor: const Color.fromARGB(145, 0, 206, 34),
         filled: true,
         suffixIcon: IconButton( 
           icon: Icon ( Icons.send_outlined ),
-          onPressed: () {},
+          onPressed: () {
+            final valorTexto = textController.text;
+            print('boton: $valorTexto');
+            textController.clear();
+          },
           )     
       );
 
 
     return TextFormField(
+      // keyboardType: ,
+      onTapOutside:(event) {
+        focusNode.unfocus();
+      },
+      focusNode: focusNode,
+      controller: textController,
+
       decoration: inputDecoracion,
 
       onFieldSubmitted: (value) {
         print('Valor: $value');
+        textController.clear();
+        focusNode.requestFocus();
       },
 
-      onChanged: (value) {
-        print('change: $value');
-      },
+      
 
 
 
