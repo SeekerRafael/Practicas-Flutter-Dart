@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'package:yes_no_app/domain/entities/message.dart';
+import 'package:yes_no_app/presentation/providers/chat_provider.dart';
 import 'package:yes_no_app/presentation/widgets/chat/mis_mensajes.dart';
 import 'package:yes_no_app/presentation/widgets/chat/otros_mensajes.dart';
 import 'package:yes_no_app/presentation/widgets/shared/campo_mensajes.dart';
@@ -14,7 +17,7 @@ class ChatScreen extends StatelessWidget {
         leading: Padding(
           padding: const EdgeInsets.all(4.0),
           child: CircleAvatar(
-            backgroundImage: NetworkImage('https://static.wikia.nocookie.net/uncharted/images/e/e1/Nathan_Drake_from_ATE_headshot.png/revision/latest?cb=20221025141033'),
+            backgroundImage: NetworkImage('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRudUCUyInOJagPGlZQtbQcW9u5rlF7Ou4bBg&s'),
           ),
         ),
         title: Text('Rafita'),
@@ -28,6 +31,9 @@ class _ChatView extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
+
+    final chatProvider = context.watch<ChatProvider>();
+
     return SafeArea(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 10),
@@ -35,11 +41,13 @@ class _ChatView extends StatelessWidget {
           children: [
             Expanded(
               child: ListView.builder(
-                itemCount: 100,
+                itemCount: chatProvider.messageList.length,
                 itemBuilder: (context, index) {
-                  return ( index % 2 == 0) 
-                    ? const OtrosMensajes()
-                    : const MisMensajes();
+                  final message = chatProvider.messageList[index];
+
+                  return ( message.persona == Persona.mujer )
+                    ? OtrosMensajes()
+                    : MisMensajes();
               })),
             CampoMensajes()
           ],

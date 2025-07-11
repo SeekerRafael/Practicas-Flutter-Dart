@@ -49,11 +49,6 @@ class CampoMensajes extends StatelessWidget {
         textController.clear();
         focusNode.requestFocus();
       },
-
-      
-
-
-
     );
   }
 }

@@ -5,7 +5,6 @@ class OtrosMensajes extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-
     final colors = Theme.of(context).colorScheme;
 
     return Column(
@@ -14,25 +13,27 @@ class OtrosMensajes extends StatelessWidget {
         Container(
           decoration: BoxDecoration(
             color: colors.secondary,
-            borderRadius: BorderRadius.circular(20)
+            borderRadius: BorderRadius.circular(20),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-            child: Text('Hola mundo', style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),),
+            child: Text(
+              'Hola mundo',
+              style: TextStyle(color: const Color.fromARGB(255, 255, 255, 255)),
+            ),
           ),
         ),
-        const SizedBox(height: 5,),
+        const SizedBox(height: 5),
 
         _ImagenChat(),
 
-        const SizedBox(height: 10,)
+        const SizedBox(height: 10),
       ],
     );
   }
 }
 
 class _ImagenChat extends StatelessWidget {
-
   @override
   Widget build(BuildContext context) {
     final size = MediaQuery.of(context).size;
@@ -45,19 +46,16 @@ class _ImagenChat extends StatelessWidget {
         height: 150,
         fit: BoxFit.cover,
         loadingBuilder: (context, child, loadingProgress) {
-          if ( loadingProgress == null ) return child;
+          if (loadingProgress == null) return child;
 
           return Container(
             width: size.width * 0.7,
             height: 150,
-           padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
-           child: Text('Se esta enviando el mensaje'),
-            
+            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+            child: Text('Se esta enviando el mensaje'),
           );
         },
-      ));
+      ),
+    );
   }
 }
-
-
-
