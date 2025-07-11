@@ -47,7 +47,7 @@ class _ChatView extends StatelessWidget {
 
                   return ( message.persona == Persona.mujer )
                     ? OtrosMensajes()
-                    : MisMensajes();
+                    : MisMensajes(message:message);
               })),
             CampoMensajes()
           ],

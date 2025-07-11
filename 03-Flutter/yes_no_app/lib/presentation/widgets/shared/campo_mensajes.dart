@@ -13,7 +13,7 @@ class CampoMensajes extends StatelessWidget {
     final colors = Theme.of(context).colorScheme;
 
     final outlineInputBorder = UnderlineInputBorder(
-      borderSide: const BorderSide( color: Colors.transparent),
+      borderSide: const BorderSide( color: Color.fromARGB(0, 195, 18, 18)),
       borderRadius: BorderRadius.circular(20)
     );
 
