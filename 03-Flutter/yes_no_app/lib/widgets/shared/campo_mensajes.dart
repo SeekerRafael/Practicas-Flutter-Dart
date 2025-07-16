@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CampoMensajes extends StatelessWidget {
-  const CampoMensajes({super.key});
+
+  final ValueChanged<String> onValue;
+
+  const CampoMensajes({
+    super.key,
+    required this.onValue
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -9,8 +15,6 @@ class CampoMensajes extends StatelessWidget {
     final textController = TextEditingController();
 
     final focusNode = FocusNode();
-
-    final colors = Theme.of(context).colorScheme;
 
     final outlineInputBorder = UnderlineInputBorder(
       borderSide: const BorderSide( color: Color.fromARGB(0, 195, 18, 18)),
@@ -29,6 +33,7 @@ class CampoMensajes extends StatelessWidget {
             final valorTexto = textController.text;
             print('boton: $valorTexto');
             textController.clear();
+            onValue(valorTexto);
           },
           )     
       );
@@ -48,6 +53,7 @@ class CampoMensajes extends StatelessWidget {
         print('Valor: $value');
         textController.clear();
         focusNode.requestFocus();
+        onValue(value);
       },
     );
   }

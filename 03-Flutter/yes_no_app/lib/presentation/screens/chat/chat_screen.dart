@@ -49,7 +49,7 @@ class _ChatView extends StatelessWidget {
                     ? OtrosMensajes()
                     : MisMensajes(message:message);
               })),
-            CampoMensajes()
+            CampoMensajes(onValue: (value) => chatProvider.sendMessage(value),)
           ],
         ),
       ),
