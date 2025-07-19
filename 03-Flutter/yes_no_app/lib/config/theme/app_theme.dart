@@ -15,10 +15,10 @@ const List<Color> _colorThemes = [
   Colors.indigo,
   Colors.deepPurple,
   Colors.lightGreen,
-  Color.fromARGB(255, 255, 140, 0), // deep orange
-  Color.fromARGB(255, 0, 188, 212), // cyan accent
-  Color.fromARGB(255, 156, 39, 176), // purple
-  Color.fromARGB(255, 63, 81, 181), // indigo
+  Color.fromARGB(255, 255, 140, 0), 
+  Color.fromARGB(255, 0, 188, 212), 
+  Color.fromARGB(255, 156, 39, 176), 
+  Color.fromARGB(255, 63, 81, 181), 
 ];
 
 class AppTheme {
